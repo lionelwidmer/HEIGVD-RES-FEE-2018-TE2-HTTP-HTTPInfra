@@ -1,0 +1,12 @@
+# Start reverse proxy with dynamic configuration
+docker run -d -e STATIC_APP=172.17.0.5:80 -e DYNAMIC_APP=172.17.0.8:3000 --name apache_rp -p 8080:80 res/apache_rp
+
+
+# Start load balancer and 3 containers of each type
+docker run -d res/express_students
+docker run -d res/express_students
+docker run -d res/express_students
+docker run -d res/apache_php
+docker run -d res/apache_php
+docker run -d res/apache_php
+docker run -d -p 8081:80 --name apache_lb res/apache_lb

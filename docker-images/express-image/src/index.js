@@ -1,4 +1,5 @@
 var Chance = require('chance');
+var os = require('os');
 var chance = new Chance();
 
 var express = require('express');
@@ -31,7 +32,8 @@ function generatePayload() {
 			company: company,
 			domain: domain,
 			ip: ip,
-			picture: picture
+			picture: picture,
+			hostname: os.hostname()
 		});
 	};
 
